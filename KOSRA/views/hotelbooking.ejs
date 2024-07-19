@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="/js/script.js" defer></script>
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #6B723B;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-link {
+            color: #6B723B;
+            text-decoration: none;
+        }
+
+        .nav-link.home {
+            margin-left: 1rem;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-top: 100px;
+            color: #333;
+            font-family: 'Playfair Display', serif;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            background-color: #6B723B;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-family: 'Lato', sans-serif;
+            display: block;
+            margin: 20px auto 0;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #4d5a2c;
+            transform: translateY(-3px);
+        }
+
+        .decorative-elements {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: #6B723B;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .decorative-elements-2 {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 150px;
+            height: 150px;
+            background: #df9143;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const today = new Date().toISOString().split('T')[0];
+            const checkInDate = document.getElementById("checkInDate");
+            const checkOutDate = document.getElementById("checkOutDate");
+
+            checkInDate.setAttribute("min", today);
+            checkOutDate.setAttribute("min", today);
+
+            checkInDate.addEventListener("change", function() {
+                checkOutDate.setAttribute("min", this.value);
+                if (checkOutDate.value < this.value) {
+                    checkOutDate.value = this.value;
+                }
+            });
+
+            checkOutDate.addEventListener("change", function() {
+                if (this.value < checkInDate.value) {
+                    this.value = checkInDate.value;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">KOSRA</a>
+        <a class="nav-link home" href="/again.html">Home</a>
+    </nav>
+    <h1>Hotel Booking Form</h1>
+    <form action="/book-hotel" method="POST" id="bookingForm" onsubmit="return validateForm()">
+        <div class="decorative-elements"></div>
+        <div class="decorative-elements-2"></div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="hotelType">Hotel Type:</label>
+        <select id="hotelType" name="hotelType" onchange="calculatePrice(); validateForm()" required>
+            <option value="standard">Standard</option>
+            <option value="deluxe">Deluxe</option>
+            <option value="suite">Suite</option>
+        </select>
+
+        <label for="adults">Number of Adults:</label>
+        <input type="number" id="adults" name="adults" min="1" value="1" onchange="validateForm()">
+
+        <label for="children">Number of Children:</label>
+        <input type="number" id="children" name="children" min="0" value="0" onchange="validateForm()">
+
+        <label for="rooms">Number of Rooms:</label>
+        <input type="number" id="rooms" name="rooms" min="1" value="1" onchange="calculatePrice(); validateForm()" required>
+
+        <label for="checkInDate">Check-in Date:</label>
+        <input type="date" id="checkInDate" name="checkInDate" required>
+
+        <label for="checkOutDate">Check-out Date:</label>
+        <input type="date" id="checkOutDate" name="checkOutDate" required>
+
+        <h2>Total Price: &#8377;<span id="totalPrice">100</span></h2>
+        <p id="errorMessage" style="color: red;"></p>
+
+        <button type="submit">Submit</button>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

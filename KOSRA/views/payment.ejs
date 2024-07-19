@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Gateway</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #ffffff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            z-index: 10;
+            position: fixed;
+            top: 0;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            color: #6B723B;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-link {
+            color: #6B723B;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            color: #333333;
+            text-align: center;
+            margin: 100px auto 20px; /* Adjusted for fixed navbar */
+            position: relative; /* Added for decorative bubbles */
+            overflow: hidden; /* Added for decorative bubbles */
+        }
+
+        h1, h2 {
+            color: #6B723B; /* Theme color */
+            font-family: 'Playfair Display', serif;
+        }
+
+        .booking-details {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .booking-details p {
+            margin: 10px 0;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .booking-details label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .booking-details span {
+            font-size: 16px;
+            color: #333333;
+        }
+
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        button[type="submit"] {
+            background-color: #6B723B;
+            color: #ffffff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #4d5a2c;
+            transform: translateY(-3px);
+        }
+
+        .decorative-elements {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: #6B723B;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+
+        .decorative-elements-2 {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 150px;
+            height: 150px;
+            background: #df9143;
+            border-radius: 50%;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">KOSRA</a>
+        <a class="nav-link home" href="/again.html">Home</a>
+        <a class="nav-link form" href="/hotel">Form</a>
+    </nav>
+    <div class="container">
+        <div class="decorative-elements"></div>
+        <div class="decorative-elements-2"></div>
+        <h1>Payment Gateway</h1>
+        <h2>Booking Details</h2>
+        <div class="booking-details">
+            <p><label>Name:</label> <span><%= name %></span></p>
+            <p><label>Hotel Type:</label> <span><%= hotelType %></span></p>
+            <p><label>Number of Adults:</label> <span><%= adults %></span></p>
+            <p><label>Number of Children:</label> <span><%= children %></span></p>
+            <p><label>Number of Rooms:</label> <span><%= rooms %></span></p>
+            <p><label>Check-in Date:</label> <span><%= formattedCheckInDate %></span></p>
+            <p><label>Check-out Date:</label> <span><%= formattedCheckOutDate %></span></p>
+            <p><label>Total Price:</label> <span>&#8377;<%= totalPrice %></span></p>
+        </div>
+        <form action="/payment2" method="POST">
+            <input type="hidden" name="name" value="<%= name %>">
+            <input type="hidden" name="hotelType" value="<%= hotelType %>">
+            <input type="hidden" name="adults" value="<%= adults %>">
+            <input type="hidden" name="children" value="<%= children %>">
+            <input type="hidden" name="rooms" value="<%= rooms %>">
+            <input type="hidden" name="totalPrice" value="<%= totalPrice %>">
+            <input type="hidden" name="formattedCheckInDate" value="<%= formattedCheckInDate %>">
+            <input type="hidden" name="formattedCheckOutDate" value="<%= formattedCheckOutDate %>">
+
+            <p><label>Advance Amount to Pay:</label> <span>&#8377;<%= advanceAmount %></span></p>
+            <button type="submit">Pay Now</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

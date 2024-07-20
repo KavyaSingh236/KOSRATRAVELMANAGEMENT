@@ -15,7 +15,7 @@ Welcome to **KOSRA**, your ultimate travel companion! Designed to make your trav
 
 ## 📹 Watch the Demo
 
-[![Watch the Demo](https://github.com/KavyaSingh236/KOSRATRAVELMANAGEMENT/blob/main/thumbnail.png)](https://www.youtube.com/watch?v=6weCI4irNt0)
+[![Watch the Demo](https://github.com/KavyaSingh236/KOSRATRAVELMANAGEMENT/blob/main/thumbnail.png)](https://youtu.be/zxZyqtTxmeo)
 
 ## 🌍 Connect Us
 

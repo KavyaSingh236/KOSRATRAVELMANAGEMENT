@@ -1,5 +1,5 @@
 
-# 🌟 KOSRA Travel Management 🌟
+# 🌟 KOSRA Travel Management ! 🌟
 
 Welcome to **KOSRA**, your ultimate travel companion! Designed to make your travel planning as smooth and enjoyable as possible, KOSRA combines sleek design with powerful functionality. After signing in, you'll be greeted by a stunning landing page, seamlessly guiding you through our four main features:
 

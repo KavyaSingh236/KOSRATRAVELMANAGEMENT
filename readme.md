@@ -17,14 +17,13 @@ Welcome to **KOSRA**, your ultimate travel companion! Designed to make your trav
 
 [![Watch the Demo](https://github.com/KavyaSingh236/KOSRATRAVELMANAGEMENT/blob/main/thumbnail.png)](https://youtu.be/zxZyqtTxmeo)
 
-## 🌍 Connect Us
+## 🌍 Let's connect
 
 For updates, news, and more, follow us on social media:
 
 - [LinkedIn - Kavya Singh](https://www.linkedin.com/in/kavya-singh-690888292/)
-- [LinkedIn - Afifah](https://www.linkedin.com/in/afifah-linkedin/)
 - [GitHub - Kavya Singh](https://github.com/KavyaSingh236)
-- [GitHub - Afifah](https://www.linkedin.com/in/afifah-ayesha-bijli-07ba4924b/)
+
 
 
 
